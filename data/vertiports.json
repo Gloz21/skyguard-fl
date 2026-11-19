@@ -1,0 +1,13 @@
+{
+  "_label": "SIMULATED: approximate demo locations, not official vertiport sites",
+  "vertiports": [
+    {"id": "TPA", "name": "Tampa - Downtown", "lat": 27.9420, "lon": -82.4520},
+    {"id": "ORL", "name": "Orlando - MCO area", "lat": 28.4294, "lon": -81.3089},
+    {"id": "TIX", "name": "Space Coast - Titusville", "lat": 28.5148, "lon": -80.7992},
+    {"id": "MLB", "name": "Melbourne", "lat": 28.1028, "lon": -80.6453}
+  ],
+  "launch_sites": [
+    {"id": "LC39A", "name": "Launch Complex 39A", "lat": 28.6082, "lon": -80.6041},
+    {"id": "SLC40", "name": "Space Launch Complex 40", "lat": 28.5618, "lon": -80.5772}
+  ]
+}

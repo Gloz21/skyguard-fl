@@ -1,0 +1,13 @@
+{
+  "_label": "SIMULATED: demo flight schedule",
+  "demo_start_utc": "2026-11-20T17:30:00Z",
+  "flights": [
+    {"id": "SG101", "from": "TPA", "to": "ORL", "depart_utc": "2026-11-20T17:35:00Z", "cruise_ft": 1500, "speed_kt": 150},
+    {"id": "SG102", "from": "ORL", "to": "TIX", "depart_utc": "2026-11-20T17:50:00Z", "cruise_ft": 1500, "speed_kt": 150},
+    {"id": "SG103", "from": "ORL", "to": "MLB", "depart_utc": "2026-11-20T17:38:00Z", "cruise_ft": 1500, "speed_kt": 150},
+    {"id": "SG104", "from": "TIX", "to": "ORL", "depart_utc": "2026-11-20T18:20:00Z", "cruise_ft": 1500, "speed_kt": 150},
+    {"id": "SG105", "from": "ORL", "to": "TPA", "depart_utc": "2026-11-20T17:40:00Z", "cruise_ft": 1500, "speed_kt": 150,
+     "_scenario": "security_deviation"},
+    {"id": "SG106", "from": "MLB", "to": "ORL", "depart_utc": "2026-11-20T18:05:00Z", "cruise_ft": 1500, "speed_kt": 150}
+  ]
+}

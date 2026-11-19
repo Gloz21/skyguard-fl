@@ -1,0 +1,25 @@
+{
+  "_label": "APPROXIMATE demo locations around Florida Poly (Lakeland). Unit limits marked 'assumed' must be confirmed with the police department / manufacturer.",
+  "base": {"id": "HQ", "name": "Florida Poly Police HQ", "lat": 28.1500, "lon": -81.8500},
+  "landmarks": [
+    {"id": "IST", "name": "Innovation, Science & Technology Building", "lat": 28.1486, "lon": -81.8487},
+    {"id": "BARC", "name": "Barnett Applied Research Center", "lat": 28.1473, "lon": -81.8530},
+    {"id": "RES", "name": "Residence Halls", "lat": 28.1517, "lon": -81.8524},
+    {"id": "SDC", "name": "Student Development Center", "lat": 28.1505, "lon": -81.8461},
+    {"id": "POND", "name": "Campus retention ponds", "lat": 28.1455, "lon": -81.8475},
+    {"id": "WOODS", "name": "Wooded area north of campus", "lat": 28.1650, "lon": -81.8550},
+    {"id": "I4", "name": "I-4 / Polk Parkway interchange", "lat": 28.1460, "lon": -81.8330},
+    {"id": "SUNTRAX", "name": "SunTrax test track", "lat": 28.1356, "lon": -81.8150},
+    {"id": "LAKEPARKER", "name": "Lake Parker", "lat": 28.0660, "lon": -81.9230}
+  ],
+  "units": [
+    {"id": "ASTRO", "name": "Astro (Jetson ONE eVTOL, piloted)", "type": "air", "speed_kt": 55, "endurance_min": 20,
+     "reserve_min": 5, "prep_min": 3, "max_wind_kt": 15, "carries_officer": true,
+     "_source": "speed (63 mph) and ~20 min endurance from news reports; reserve, prep time and wind limit are ASSUMED"},
+    {"id": "DRONE", "name": "Police drone unit", "type": "air", "speed_kt": 35, "endurance_min": 35,
+     "reserve_min": 5, "prep_min": 1, "max_wind_kt": 20, "carries_officer": false,
+     "_source": "ASSUMED typical small-drone values"},
+    {"id": "GROUND", "name": "Patrol car / officer on foot", "type": "ground", "speed_kt": 17, "road_factor": 1.4,
+     "prep_min": 0.5, "carries_officer": true, "_source": "ASSUMED average campus driving speed"}
+  ]
+}

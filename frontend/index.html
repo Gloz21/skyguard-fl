@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkyGuard FL</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<style>
+/* Minimal Leaflet layout rules (inlined so no external stylesheet is needed) */
+.leaflet-pane,.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile-container,.leaflet-pane>svg,.leaflet-pane>canvas,.leaflet-zoom-box,.leaflet-image-layer,.leaflet-layer{position:absolute;left:0;top:0}
+.leaflet-container{overflow:hidden;-webkit-tap-highlight-color:transparent;outline:0}
+.leaflet-tile,.leaflet-marker-icon{user-select:none;-webkit-user-drag:none}
+.leaflet-container img.leaflet-tile{max-width:none!important;max-height:none!important;width:256px;height:256px}
+.leaflet-tile{filter:inherit;visibility:hidden}.leaflet-tile-loaded{visibility:inherit}
+.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}
+.leaflet-zoom-animated{transform-origin:0 0}
+.leaflet-pane>svg path{pointer-events:none}.leaflet-pane>svg path.leaflet-interactive{pointer-events:visiblePainted;cursor:pointer}
+.leaflet-top,.leaflet-bottom{position:absolute;z-index:1000;pointer-events:none}.leaflet-top{top:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}.leaflet-right{right:0}
+.leaflet-control{position:relative;z-index:800;pointer-events:auto;float:left;clear:both}.leaflet-right .leaflet-control{float:right}
+.leaflet-top .leaflet-control{margin-top:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-bottom .leaflet-control{margin-bottom:0}.leaflet-right .leaflet-control{margin-right:0}
+.leaflet-bar{border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.3);overflow:hidden}
+.leaflet-bar a{display:block;width:30px;height:30px;line-height:30px;text-align:center;background:#fff;color:#111;text-decoration:none;font:bold 18px sans-serif;border-bottom:1px solid #ddd}
+.leaflet-control-attribution{background:rgba(255,255,255,.8);font-size:10px;padding:0 5px;color:#333}.leaflet-control-attribution a{color:#0b5}
+.leaflet-tooltip{position:absolute;padding:2px 6px;background:rgba(255,255,255,.92);border-radius:4px;color:#0f172a;font:600 11px system-ui,sans-serif;white-space:nowrap;pointer-events:none;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.leaflet-tooltip-top:before,.leaflet-tooltip-bottom:before{display:none}
+
+:root{--bg:#0b1220;--panel:#111a2e;--card:#16223b;--line:#24324f;--text:#e6edf7;--muted:#93a3bd;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--blue:#38bdf8;--purple:#a78bfa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+header h1{font-size:18px;margin:0;letter-spacing:.3px}
+header h1 span{color:var(--blue)}
+.tabs{display:flex;gap:6px;margin-left:auto}
+.tab{background:var(--card);color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer;font-weight:600}
+.tab.on{background:var(--blue);color:#04121f;border-color:var(--blue)}
+.disclaimer{background:#3b2a07;color:#fde68a;font-size:12px;padding:6px 14px;border-bottom:1px solid #5b4310}
+main{display:grid;grid-template-columns:1fr 430px;height:calc(100vh - 88px)}
+#map{height:100%;background:#cfe3f3}
+aside{overflow-y:auto;border-left:1px solid var(--line);background:var(--panel);padding:12px}
+@media (max-width:900px){main{grid-template-columns:1fr;height:auto}#map{height:48vh}aside{border-left:0}}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin:16px 0 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px}
+.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:.3px}
+.b-CLEAR,.b-READY,.b-LOW{background:#14532d;color:#bbf7d0}.b-CONFLICT,.b-HIGH{background:#7f1d1d;color:#fecaca}
+.b-HOLD,.b-MEDIUM,.b-SUPERVISOR_REVIEW{background:#78350f;color:#fde68a}.b-SIM{background:#312e81;color:#c7d2fe}
+.b-AI{background:#0c4a6e;color:#bae6fd}.b-off{background:#334155;color:#cbd5e1}
+.muted{color:var(--muted);font-size:12px}
+.small{font-size:12px}
+button.act{background:#1e293b;color:var(--text);border:1px solid #334155;border-radius:8px;padding:6px 10px;font-weight:600;cursor:pointer;font-size:12px}
+button.act:hover{border-color:var(--blue)}
+button.ok{background:#166534;border-color:#166534}button.no{background:#3f1d1d;border-color:#7f1d1d}button.warn{background:#7c2d12;border-color:#9a3412}
+button.act:disabled{opacity:.45;cursor:default}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:2px 6px}
+.timeline{display:flex;align-items:center;gap:8px}
+input[type=range]{flex:1}
+details summary{cursor:pointer;color:var(--blue);font-size:12px}
+pre{white-space:pre-wrap;word-break:break-word;background:#0b1325;padding:8px;border-radius:6px;font-size:11px;color:#cbd5e1}
+textarea{width:100%;min-height:70px;background:#0b1325;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px;font:inherit}
+table{width:100%;border-collapse:collapse;font-size:12px}td,th{padding:5px 4px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.decided{font-size:12px;color:var(--green);font-weight:600}
+.alert-pulse{animation:pulse 1.2s infinite}@keyframes pulse{50%{opacity:.35}}
+label.tog{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer}
+.hidden{display:none}
+.intro{background:linear-gradient(135deg,#0c4a6e,#1e1b4b);border:1px solid #1e3a8a;border-radius:12px;padding:12px 14px;margin-bottom:12px}
+.intro h3{margin:0 0 4px;font-size:17px}.intro p{margin:0;font-size:13px;color:#cbd5e1}
+.steps{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}.steps span{font-size:11px;background:rgba(255,255,255,.08);border-radius:6px;padding:3px 7px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Sky<span>Guard</span> FL</h1>
+  <div class="muted">AI safety copilot for Florida air taxis &amp; campus police aircraft</div>
+  <div class="tabs">
+    <button class="tab on" data-mode="launch">🚀 LaunchClear</button>
+    <button class="tab" data-mode="route">🛰️ RouteWatch</button>
+    <button class="tab" data-mode="astro">🚓 AstroDispatch</button>
+  </div>
+</header>
+<div class="disclaimer">⚠ PROTOTYPE — not for real flight or police operations. Flight tracks, notices, weather and locations are SIMULATED. A human makes every safety decision.</div>
+<main>
+  <div id="map"></div>
+  <aside>
+    <div class="intro" id="intro"></div>
+    <!-- CORRIDOR -->
+    <section id="corridor">
+      <div class="card">
+        <div class="timeline">
+          <button class="act" id="play">▶ Play</button>
+          <input type="range" id="slider" min="0" max="60" value="0">
+          <b id="clock">17:30Z</b>
+        </div>
+        <div class="chips" style="margin-top:8px" id="fresh"></div>
+        <label class="tog" style="margin-top:8px"><input type="checkbox" id="outage"> Simulate data outage (notices 45 min old)</label>
+      </div>
+      <div id="routePanel" class="hidden">
+        <h2>Security alerts</h2>
+        <div id="alerts"></div>
+        <h2>Flights in the air</h2>
+        <div id="airborne"></div>
+      </div>
+      <div id="launchPanel">
+        <h2>Flights vs. launch closures</h2>
+        <div id="flights"></div>
+        <h2>Airspace closures (read by AI)</h2>
+        <div id="closures"></div>
+      </div>
+    </section>
+    <!-- CAMPUS -->
+    <section id="campus" class="hidden">
+      <div class="card">
+        <div class="small" style="margin-bottom:6px"><b>Incident report</b> <span class="muted">(what the caller said)</span></div>
+        <textarea id="report" placeholder="Type what the caller reported…"></textarea>
+        <div class="row" style="margin-top:6px">
+          <button class="act ok" id="analyze">Analyze report</button>
+          <label class="tog"><input type="checkbox" id="staleWx"> Simulate stale weather</label>
+        </div>
+        <div class="muted" style="margin-top:8px">Sample reports:</div>
+        <div class="chips" id="presets" style="margin-top:4px"></div>
+      </div>
+      <div id="plan"></div>
+    </section>
+    <h2>Decision log (humans only)</h2>
+    <div id="log" class="card muted">No decisions yet.</div>
+  </aside>
+</main>
+<script>
+const SNAP = window.SKYGUARD_SNAPSHOT || null;
+const api = {
+  async static(){ return SNAP ? SNAP.static : (await fetch('/api/static')).json(); },
+  async state(m, outage){ return SNAP ? SNAP.states[outage?1:0][m] : (await fetch(`/api/state?minute=${m}&outage=${outage?1:0}`)).json(); },
+  async plan(text, id, stale){
+    if (SNAP){
+      if (id && SNAP.campus[stale?1:0][id]) return SNAP.campus[stale?1:0][id];
+      return {status:'HOLD', checks:['This offline demo only has the sample reports. Run the backend with a Gemini key to analyze any text live.'], units:[]};
+    }
+    const r = await fetch('/api/campus/plan',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text,incident_id:id,stale_weather:stale})});
+    return r.json();
+  },
+  decision(e){ if(!SNAP) fetch('/api/decision',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(e)}).catch(()=>{}); }
+};
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const hhmm = iso => iso ? iso.slice(11,16)+'Z' : '—';
+const ft = v => v==null ? '—' : v===0 ? 'surface' : v>=99999 ? 'unlimited' : v.toLocaleString()+' ft';
+
+let ST, cur, mode='launch', minute=0, outage=false, playing=null;
+const decisions = {}; const log = [];
+const map = L.map('map',{zoomControl:true, attributionControl:true});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:17, attribution:'© OpenStreetMap'}).addTo(map);
+// Simplified Florida outline so the map still reads if map tiles can't load.
+const FL = [[31,-87.6],[31,-85],[30.7,-84.9],[30.6,-82.2],[30.7,-81.45],[30.3,-81.4],[29.9,-81.3],[29.2,-81.0],[28.8,-80.8],[28.6,-80.6],[28.45,-80.52],[28.3,-80.6],[28.0,-80.55],[27.5,-80.3],[27.0,-80.1],[26.5,-80.05],[25.8,-80.12],[25.3,-80.4],[25.15,-80.9],[25.4,-81.2],[25.9,-81.7],[26.5,-82.1],[27.0,-82.4],[27.5,-82.7],[27.9,-82.8],[28.2,-82.75],[28.7,-82.65],[29.1,-82.8],[29.7,-83.4],[30.1,-83.95],[30.0,-84.4],[29.7,-85.0],[29.7,-85.4],[30.2,-86.0],[30.4,-86.8],[30.3,-87.5]];
+L.polygon(FL,{color:'#64748b',weight:1,fillColor:'#eef2e6',fillOpacity:.9,interactive:false}).addTo(map);
+const base = L.layerGroup().addTo(map), dyn = L.layerGroup().addTo(map);
+const COL = {CLEAR:'#16a34a', CONFLICT:'#dc2626', HOLD:'#d97706'};
+
+function addDecision(item, action, who='Dispatcher'){
+  decisions[item] = action; log.unshift({t:new Date().toLocaleTimeString(), who, item, action});
+  api.decision({who, item, action});
+  document.getElementById('log').innerHTML = log.map(l=>`<div class="small"><b>${esc(l.t)}</b> · ${esc(l.who)} · ${esc(l.item)} → <span style="color:var(--text)">${esc(l.action)}</span></div>`).join('');
+  render();
+}
+window.decide = (item, action, who) => addDecision(item, action, who);
+
+function closureStyle(c, active){
+  const color = c.needs_review ? '#7c3aed' : c.category==='SPACE_OPS' ? '#dc2626' : '#ea580c';
+  return {color, weight:2, fillColor:color, fillOpacity: active ? .22 : .06, dashArray: active ? null : '6 6'};
+}
+
+function drawBase(){
+  base.clearLayers();
+  const activeIds = new Set((cur?.closures||[]).filter(c=>c.active_now!==false).map(c=>c.id));
+  for (const c of ST.closures) if (c.polygon) {
+    const active = mode==='astro' ? true : activeIds.has(c.id);
+    L.polygon(c.polygon, closureStyle(c, active)).bindTooltip(`${c.id} · ${c.category}`,{sticky:true}).addTo(base);
+  }
+  if (mode!=='astro'){
+    for (const s of ST.launch_sites) L.circleMarker([s.lat,s.lon],{radius:5,color:'#7f1d1d',fillColor:'#ef4444',fillOpacity:1,weight:1}).bindTooltip('🚀 '+s.id).addTo(base);
+    for (const v of ST.vertiports) L.circleMarker([v.lat,v.lon],{radius:7,color:'#0c4a6e',fillColor:'#38bdf8',fillOpacity:1,weight:2})
+      .bindTooltip(v.id,{permanent:true,direction:'top',offset:[0,-6]}).addTo(base);
+  } else {
+    const cp = ST.campus;
+    L.circleMarker([cp.base.lat,cp.base.lon],{radius:8,color:'#1e3a8a',fillColor:'#3b82f6',fillOpacity:1,weight:2}).bindTooltip('Police HQ',{permanent:true,direction:'top',offset:[0,-6]}).addTo(base);
+    for (const l of cp.landmarks) L.circleMarker([l.lat,l.lon],{radius:4,color:'#334155',fillColor:'#94a3b8',fillOpacity:1,weight:1}).bindTooltip(l.name).addTo(base);
+  }
+}
+
+function renderCorridor(){
+  dyn.clearLayers();
+  const vp = Object.fromEntries(ST.vertiports.map(v=>[v.id,v]));
+  for (const f of cur.flights){
+    const a=vp[f.from], b=vp[f.to];
+    const rw = mode==='route';
+    L.polyline([[a.lat,a.lon],[b.lat,b.lon]],{color: rw ? '#64748b' : COL[f.status], weight: rw ? 2 : 3, opacity: rw ? .5 : .75, dashArray:f.status==='CLEAR'?null:'8 6'}).bindTooltip(`${f.flight_id} ${f.from}→${f.to} · ${f.status}`,{sticky:true}).addTo(dyn);
+    if (f.airborne){
+      const alert = cur.alerts.find(x=>x.flight_id===f.flight_id);
+      L.polyline(f.trail,{color: alert ? '#dc2626':'#0f172a', weight:2, opacity:.8}).addTo(dyn);
+      if (!rw && !alert){ L.circleMarker([f.position.lat,f.position.lon],{radius:4,color:'#fff',weight:1,fillColor:'#0f172a',fillOpacity:1}).addTo(dyn); continue; }
+      L.circleMarker([f.position.lat,f.position.lon],{radius: alert?9:6, color:'#fff', weight:2, fillColor: alert?'#dc2626':'#0f172a', fillOpacity:1, className: alert?'alert-pulse':''})
+        .bindTooltip(`${f.flight_id} · ${f.position.alt_ft} ft · ${f.position.gs_kt} kt`,{permanent:true,direction:'right',offset:[8,0]}).addTo(dyn);
+    }
+  }
+  document.getElementById('clock').textContent = hhmm(cur.now_utc);
+  const d = cur.data;
+  document.getElementById('fresh').innerHTML =
+    `<span class="chip">Notices fetched ${hhmm(d.notams_fetched_utc)} (${d.notam_age_min} min old)</span>
+     <span class="badge b-SIM">${esc(d.tracks_label)}</span><span class="badge b-SIM">${esc(d.notams_label)}</span>
+     <span class="chip">Anomaly model trained on ${d.model_training_points.toLocaleString()} normal position reports</span>`;
+
+  // Alerts
+  const al = cur.alerts.map(a=>{
+    const key = 'ALERT '+a.flight_id; const done = decisions[key];
+    const flags = a.flags.map(x=>({DRIFT:'Drifting off route',UNEXPECTED_DESCENT:'Unexpected descent',LOITER:'Circling / slowing down'})[x]).join(' · ');
+    return `<div class="card" style="border-color:#7f1d1d">
+      <div class="row"><b>${esc(a.flight_id)}</b><span class="badge b-${a.risk}">${a.risk} RISK</span><span class="badge b-AI">AI anomaly model</span><span class="muted">${hhmm(a.time_utc)}</span></div>
+      <div class="small" style="margin:4px 0">${esc(flags)}</div>
+      <div class="muted">Off route ${a.off_route_nm} nm · ${a.alt_ft} ft · ${a.gs_kt} kt · scores: drift ${a.z.drift}σ, descent ${a.z.descent}σ, slow ${a.z.slow}σ (flag at 4σ)</div>
+      ${done ? `<div class="decided">✔ ${esc(done)}</div>` : `<div class="row" style="margin-top:6px">
+        <button class="act" onclick="decide('${key}','Contacted aircraft','Security operator')">Contact aircraft</button>
+        <button class="act warn" onclick="decide('${key}','Escalated to supervisor','Security operator')">Escalate</button>
+        <button class="act no" onclick="decide('${key}','Alerted police','Security operator')">Alert police</button>
+        <button class="act" onclick="decide('${key}','Dismissed (false alarm)','Security operator')">Dismiss</button></div>`}
+    </div>`;}).join('');
+  document.getElementById('alerts').innerHTML = al || '<div class="card muted">No unusual flight behavior right now. Press ▶ Play to watch the flights.</div>';
+  const air = cur.flights.filter(f=>f.airborne);
+  document.getElementById('airborne').innerHTML = air.length ? air.map(f=>{
+    const s = f.security || {risk:'LOW'};
+    return `<div class="card"><div class="row"><b>${esc(f.flight_id)}</b><span>${esc(f.from)} → ${esc(f.to)}</span>
+      <span class="badge b-${s.risk}">${s.risk==='LOW'?'NORMAL':s.risk+' RISK'}</span></div>
+      <div class="muted">${f.position.alt_ft} ft · ${f.position.gs_kt} kt${s.off_route_nm!=null?` · ${s.off_route_nm} nm off route`:''}</div></div>`;}).join('')
+    : '<div class="card muted">No flights in the air at this time.</div>';
+
+  // Flights
+  document.getElementById('flights').innerHTML = cur.flights.map(f=>{
+    const key='FLIGHT '+f.flight_id; const done = decisions[key];
+    const phase = f.airborne ? 'In the air' : f.landed ? 'Landed' : f.status==='CLEAR' ? 'Scheduled' : 'On the ground';
+    const sugg = f.suggestions.map(s=>`<div class="row" style="margin-top:6px"><span class="small">💡 ${esc(s.text)}</span>
+      ${done?'':`<button class="act ok" onclick="decide('${key}','Approved: ${esc(s.type==='DELAY'?'delay to '+hhmm(s.new_depart_utc):'use '+s.vertiport)}')">Approve</button>`}</div>`).join('');
+    return `<div class="card">
+      <div class="row"><b>${esc(f.flight_id)}</b><span>${esc(f.from)} → ${esc(f.to)}</span><span class="badge b-${f.status}">${f.status==='CLEAR'?'CLEAR':f.status==='CONFLICT'?'CONFLICT':'HOLD'}</span><span class="muted">${phase} · departs ${hhmm(f.depart_utc)} · ${f.distance_nm} nm</span></div>
+      ${f.reasons.map(r=>`<div class="small" style="margin-top:4px">${esc(r)}</div>`).join('')}
+      ${sugg}
+      ${f.status!=='CLEAR' ? (done ? `<div class="decided">✔ ${esc(done)}</div>` : `<div class="row" style="margin-top:6px"><button class="act no" onclick="decide('${key}','Cancelled flight')">Cancel flight</button><button class="act" onclick="decide('${key}','Kept on hold for review')">Keep on hold</button></div>`) : ''}
+    </div>`;}).join('');
+
+  // Closures
+  const act = Object.fromEntries(cur.closures.map(c=>[c.id,c.active_now]));
+  document.getElementById('closures').innerHTML = ST.closures.map(c=>`<div class="card">
+    <div class="row"><b>${esc(c.id)}</b><span class="badge b-off">${esc(c.category||'?')}</span>
+      ${c.affects_aircraft ? (act[c.id] ? '<span class="badge b-CONFLICT">ACTIVE NOW</span>' : '<span class="badge b-off">not active now</span>') : '<span class="badge b-CLEAR">not an airspace closure</span>'}
+      ${c.needs_review ? '<span class="badge b-HOLD">NEEDS HUMAN REVIEW</span>' : ''}</div>
+    ${c.affects_aircraft ? `<div class="small" style="margin-top:4px">${ft(c.floor_ft)} to ${ft(c.ceiling_ft)} · ${c.permanent ? 'permanent' : hhmm(c.start_utc)+' – '+hhmm(c.end_utc)}${c.radius_nm ? ' · '+c.radius_nm+' nm radius' : ''}</div>` : ''}
+    ${(c.problems||[]).map(p=>`<div class="small" style="color:#fde68a">⚠ ${esc(p)}</div>`).join('')}
+    <div class="muted">Read by: ${esc(c.parser_mode)} · every coordinate and time checked against the source text in code</div>
+    <details><summary>Show source notice</summary><pre>${esc(c.source_text)}</pre></details>
+  </div>`).join('');
+}
+
+let lastPlan=null, lastPlanId=null;
+async function runPlan(text, id){
+  lastPlanId = id; document.getElementById('plan').innerHTML = '<div class="card muted">Analyzing…</div>';
+  lastPlan = await api.plan(text, id, document.getElementById('staleWx').checked);
+  renderCampus();
+}
+function renderCampus(){
+  dyn.clearLayers();
+  const p = lastPlan; const box = document.getElementById('plan');
+  if (!p){ box.innerHTML = '<div class="card muted">Pick a sample report or type one, then press Analyze.</div>'; return; }
+  const cp = ST.campus;
+  if (p.location){
+    L.polyline([[cp.base.lat,cp.base.lon],[p.location.lat,p.location.lon]],{color:'#2563eb',weight:3,dashArray:'6 6'}).addTo(dyn);
+    L.circleMarker([p.location.lat,p.location.lon],{radius:10,color:'#fff',weight:2,fillColor:'#dc2626',fillOpacity:1,className:'alert-pulse'})
+      .bindTooltip(p.location.name,{permanent:true,direction:'right',offset:[10,0]}).addTo(dyn);
+  }
+  const key = 'INCIDENT '+(lastPlanId||'custom'); const done = decisions[key];
+  const e = p.extracted || {};
+  const wx = p.weather;
+  box.innerHTML = `<div class="card">
+      <div class="row"><b>Result</b><span class="badge b-${p.status}">${p.status.replace('_',' ')}</span>${p.parser_mode?`<span class="badge b-AI">Read by: ${esc(p.parser_mode)}</span>`:''}</div>
+      ${p.extracted ? `<table style="margin-top:6px">
+        <tr><th>Type</th><td>${esc(e.incident_type)}</td></tr>
+        <tr><th>Where</th><td>${esc(p.location?.name || 'Unknown')}${p.distance_nm!=null?` · ${p.distance_nm} nm from HQ`:''}</td></tr>
+        <tr><th>Urgency</th><td>${'●'.repeat(e.urgency||0)}${'○'.repeat(3-(e.urgency||0))} (${e.urgency}/3)</td></tr>
+        <tr><th>Evidence</th><td>“${esc(e.evidence)}”</td></tr></table>` : ''}
+      ${(p.checks||[]).map(c=>`<div class="small" style="margin-top:6px;color:#fde68a">⚠ ${esc(c)}</div>`).join('')}
+      ${wx ? `<div class="chips" style="margin-top:8px"><span class="chip">Weather ${esc(wx.station)} at ${hhmm(wx.observed_utc)} (${wx.age_min} min old)</span><span class="chip">Wind ${wx.wind_kt} kt, gusts ${wx.gust_kt}</span><span class="badge b-SIM">SIMULATED</span></div>` : ''}
+    </div>
+    ${p.units?.length ? `<div class="card"><b class="small">Unit options (all math done in code)</b>
+      <table style="margin-top:6px"><tr><th>Unit</th><th>ETA</th><th>Battery</th><th>OK?</th></tr>
+      ${p.units.map(u=>`<tr><td>${esc(u.name)}${u.notes.map(n=>`<div class="muted">${esc(n)}</div>`).join('')}</td>
+        <td>${u.eta_min} min</td><td>${u.battery_needed_min!=null?`${u.battery_needed_min}/${u.endurance_min} min`:'—'}</td>
+        <td>${u.feasible?'✅':'❌'}</td></tr>`).join('')}</table>
+      ${p.recommendation ? `<div class="small" style="margin-top:8px">💡 <b>${esc(p.recommendation.text)}</b></div>` : ''}
+      ${done ? `<div class="decided" style="margin-top:6px">✔ ${esc(done)}</div>` : `<div class="row" style="margin-top:8px">
+        ${p.requires_supervisor ? `<button class="act warn" onclick="decide('${key}','Supervisor denied surveillance request','Supervisor')">Supervisor: deny</button>
+                                   <button class="act" onclick="decide('${key}','Supervisor approved (documented reason required)','Supervisor')">Supervisor: approve</button>` :
+          p.units.filter(u=>u.feasible).map(u=>`<button class="act ok" onclick="decide('${key}','Dispatched ${esc(u.id)}','Officer')">Dispatch ${esc(u.id)}</button>`).join('')}
+        </div>`}
+    </div>` : ''}`;
+}
+
+
+const INTROS = {
+  launch: {t:'🚀 LaunchClear', p:'Keeps air taxis out of rocket launch zones on the Tampa ↔ Orlando ↔ Space Coast corridor.',
+           s:['🤖 AI reads FAA notices','🧮 Code checks every flight','👤 Dispatcher approves']},
+  route:  {t:'🛰️ RouteWatch', p:'Catches air taxis that drift off course, drop low or circle — passenger security for pilotless flights.',
+           s:['🤖 AI learns normal flights','🧮 Code scores every 30 s','👤 Operator decides']},
+  astro:  {t:'🚓 AstroDispatch', p:'Helps Florida Poly police choose between Astro, a drone or a patrol car for each emergency.',
+           s:['🤖 AI reads the call','🧮 Code checks battery, wind, airspace','👤 Officer dispatches']}
+};
+function renderIntro(){ const i = INTROS[mode];
+  document.getElementById('intro').innerHTML = `<h3>${i.t}</h3><p>${i.p}</p><div class="steps">${i.s.map(x=>`<span>${x}</span>`).join('')}</div>`; }
+function render(){
+  renderIntro();
+  if (mode!=='astro') renderCorridor(); else renderCampus();
+}
+async function loadState(){ cur = await api.state(minute, outage); drawBase(); render(); }
+
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===t));
+  mode = t.dataset.mode;
+  document.getElementById('corridor').classList.toggle('hidden', mode==='astro');
+  document.getElementById('campus').classList.toggle('hidden', mode!=='astro');
+  document.getElementById('launchPanel').classList.toggle('hidden', mode!=='launch');
+  document.getElementById('routePanel').classList.toggle('hidden', mode!=='route');
+  if (mode!=='astro') map.fitBounds([[27.85,-82.6],[28.85,-80.4]]); else map.fitBounds([[28.06,-81.93],[28.17,-81.80]]);
+  drawBase(); render();
+});
+document.getElementById('slider').oninput = e => { minute = +e.target.value; loadState(); };
+document.getElementById('outage').onchange = e => { outage = e.target.checked; loadState(); };
+document.getElementById('staleWx').onchange = () => { if (lastPlanId || document.getElementById('report').value) runPlan(document.getElementById('report').value, lastPlanId); };
+document.getElementById('play').onclick = e => {
+  if (playing){ clearInterval(playing); playing=null; e.target.textContent='▶ Play'; return; }
+  e.target.textContent='❚❚ Pause';
+  playing = setInterval(()=>{ minute = minute>=60 ? 0 : minute+1; document.getElementById('slider').value=minute; loadState(); }, 700);
+};
+document.getElementById('analyze').onclick = () => {
+  const t = document.getElementById('report').value.trim(); if (!t) return;
+  const preset = ST.campus.presets.find(p=>p.text===t);
+  runPlan(t, preset ? preset.id : null);
+};
+
+(async()=>{
+  ST = await api.static();
+  document.getElementById('presets').innerHTML = ST.campus.presets.map(p=>`<button class="chip" style="cursor:pointer;background:none" data-id="${p.id}">${esc(p.text.slice(0,42))}…</button>`).join('');
+  document.querySelectorAll('#presets button').forEach(b=>b.onclick=()=>{
+    const p = ST.campus.presets.find(x=>x.id===b.dataset.id); document.getElementById('report').value = p.text; runPlan(p.text, p.id);
+  });
+  map.fitBounds([[27.85,-82.6],[28.85,-80.4]]);
+  await loadState();
+})();
+</script>
+</body>
+</html>

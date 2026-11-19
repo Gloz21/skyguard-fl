@@ -1,0 +1,9 @@
+{
+  "_label": "SIMULATED weather. Replace with live METAR for KLAL (Lakeland Linder) from aviationweather.gov.",
+  "station": "KLAL",
+  "observed_utc": "2026-11-20T17:25:00Z",
+  "wind_kt": 8,
+  "gust_kt": 12,
+  "visibility_sm": 10,
+  "thunderstorm": false
+}
