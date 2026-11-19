@@ -1,0 +1,1125 @@
+{
+  "anthropic/claude-sonnet-5": {
+    "notam": {
+      "n": 13,
+      "all_fields_correct": "10/13",
+      "per_field": {
+        "category": "12/13",
+        "affects_aircraft": "13/13",
+        "shape": "13/13",
+        "coord_strings": "13/13",
+        "center_string": "13/13",
+        "radius_nm": "13/13",
+        "floor_raw": "13/13",
+        "ceiling_raw": "12/13",
+        "start_raw": "12/13",
+        "end_raw": "13/13"
+      },
+      "rows": [
+        {
+          "id": "FDC 6/4471",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "SPACE_OPS",
+            "affects_aircraft": true,
+            "shape": "polygon",
+            "coord_strings": [
+              "2845N08100W",
+              "2845N08030W",
+              "2815N08030W",
+              "2815N08100W"
+            ],
+            "center_string": null,
+            "radius_nm": null,
+            "floor_raw": "SFC",
+            "ceiling_raw": "UNL",
+            "start_raw": "2611201800",
+            "end_raw": "2611201930"
+          }
+        },
+        {
+          "id": "FDC 6/3621",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": false,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "TFR",
+            "affects_aircraft": true,
+            "shape": "circle",
+            "coord_strings": [],
+            "center_string": "282306N0813356W",
+            "radius_nm": 3,
+            "floor_raw": "SFC",
+            "ceiling_raw": "3000FT AGL",
+            "start_raw": null,
+            "end_raw": "PERM"
+          }
+        },
+        {
+          "id": "MCO 11/045",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "OTHER",
+            "affects_aircraft": false,
+            "shape": "none",
+            "coord_strings": [],
+            "center_string": null,
+            "radius_nm": null,
+            "floor_raw": null,
+            "ceiling_raw": null,
+            "start_raw": "2611201400",
+            "end_raw": "2611202000"
+          }
+        },
+        {
+          "id": "FDC 6/4802",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "TFR",
+            "affects_aircraft": true,
+            "shape": "circle",
+            "coord_strings": [],
+            "center_string": "280808N0814854W",
+            "radius_nm": 1,
+            "floor_raw": "SFC",
+            "ceiling_raw": "2000FT AGL",
+            "start_raw": "2611201600",
+            "end_raw": "2611202200"
+          }
+        },
+        {
+          "id": "FDC 6/5102",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "SPACE_OPS",
+            "affects_aircraft": true,
+            "shape": "polygon",
+            "coord_strings": [
+              "2838N08040W",
+              "2838N08020W",
+              "2825N08020W",
+              "2825N08040W"
+            ],
+            "center_string": null,
+            "radius_nm": null,
+            "floor_raw": "SFC",
+            "ceiling_raw": "FL180",
+            "start_raw": "2612031105",
+            "end_raw": "2612031340"
+          }
+        },
+        {
+          "id": "FDC 6/5230",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "SPACE_OPS",
+            "affects_aircraft": true,
+            "shape": "circle",
+            "coord_strings": [],
+            "center_string": "283636N0803615W",
+            "radius_nm": 30,
+            "floor_raw": "SFC",
+            "ceiling_raw": "UNL",
+            "start_raw": "2612090215",
+            "end_raw": "2612090545"
+          }
+        },
+        {
+          "id": "FDC 6/2210",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "TFR",
+            "affects_aircraft": true,
+            "shape": "circle",
+            "coord_strings": [],
+            "center_string": "254729N0801111W",
+            "radius_nm": 3,
+            "floor_raw": "SFC",
+            "ceiling_raw": "3000FT AGL",
+            "start_raw": "2611221730",
+            "end_raw": "2611222130"
+          }
+        },
+        {
+          "id": "TPA 11/112",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "OTHER",
+            "affects_aircraft": false,
+            "shape": "none",
+            "coord_strings": [],
+            "center_string": null,
+            "radius_nm": null,
+            "floor_raw": null,
+            "ceiling_raw": null,
+            "start_raw": "2611190300",
+            "end_raw": "2611191000"
+          }
+        },
+        {
+          "id": "FDC 6/4590",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "SPACE_OPS",
+            "affects_aircraft": true,
+            "shape": "polygon",
+            "coord_strings": [
+              "2842N08055W",
+              "2842N08035W",
+              "2830N08035W",
+              "2830N08055W"
+            ],
+            "center_string": null,
+            "radius_nm": null,
+            "floor_raw": "SFC",
+            "ceiling_raw": "UNL",
+            "start_raw": "2611211800",
+            "end_raw": "2611211930"
+          }
+        },
+        {
+          "id": "MLB 11/020",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": false,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "OTHER",
+            "affects_aircraft": false,
+            "shape": "none",
+            "coord_strings": [],
+            "center_string": null,
+            "radius_nm": null,
+            "floor_raw": null,
+            "ceiling_raw": "380FT AGL",
+            "start_raw": "2611180000",
+            "end_raw": "2611252359"
+          }
+        },
+        {
+          "id": "FDC 6/6001",
+          "correct": {
+            "category": false,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "TFR",
+            "affects_aircraft": true,
+            "shape": "polygon",
+            "coord_strings": [
+              "2850N08045W",
+              "2850N08025W",
+              "2835N08025W",
+              "2835N08045W"
+            ],
+            "center_string": null,
+            "radius_nm": null,
+            "floor_raw": "SFC",
+            "ceiling_raw": "UNL",
+            "start_raw": "2612150900",
+            "end_raw": "2612151100"
+          }
+        },
+        {
+          "id": "FDC 6/1177",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "TFR",
+            "affects_aircraft": true,
+            "shape": "circle",
+            "coord_strings": [],
+            "center_string": "282100N0813300W",
+            "radius_nm": 2,
+            "floor_raw": "SFC",
+            "ceiling_raw": "400FT AGL",
+            "start_raw": "2611281400",
+            "end_raw": "2611290200"
+          }
+        },
+        {
+          "id": "FDC 6/7340",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "SPACE_OPS",
+            "affects_aircraft": true,
+            "shape": "polygon",
+            "coord_strings": [
+              "2900N08050W",
+              "2900N08010W",
+              "2810N08010W",
+              "2810N08050W"
+            ],
+            "center_string": null,
+            "radius_nm": null,
+            "floor_raw": "5000FT",
+            "ceiling_raw": "UNL",
+            "start_raw": "2612200400",
+            "end_raw": "2612200630"
+          }
+        }
+      ],
+      "wrong_answers_not_caught_by_validation": [
+        "FDC 6/3621",
+        "FDC 6/6001"
+      ]
+    },
+    "incident": {
+      "n": 10,
+      "all_fields_correct": "7/10",
+      "per_field": {
+        "incident_type": "8/10",
+        "landmark_id": "10/10",
+        "surveillance_request": "9/10"
+      },
+      "rows": [
+        {
+          "id": "INC-1",
+          "correct": {
+            "incident_type": true,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "MISSING_PERSON",
+            "landmark_id": "WOODS",
+            "urgency": 3,
+            "surveillance_request": false,
+            "evidence": "heading into the woods north of campus about an hour ago"
+          }
+        },
+        {
+          "id": "INC-2",
+          "correct": {
+            "incident_type": true,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "TRAFFIC",
+            "landmark_id": "I4",
+            "urgency": 3,
+            "surveillance_request": false,
+            "evidence": "Multi-car crash on I-4 at the Polk Parkway interchange"
+          }
+        },
+        {
+          "id": "INC-3",
+          "correct": {
+            "incident_type": true,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "SUSPICIOUS_ACTIVITY",
+            "landmark_id": "RES",
+            "urgency": 1,
+            "surveillance_request": true,
+            "evidence": "fly the drone over the residence halls tonight and record that one guy in room 214"
+          }
+        },
+        {
+          "id": "INC-4",
+          "correct": {
+            "incident_type": true,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "WATER_RESCUE",
+            "landmark_id": "LAKEPARKER",
+            "urgency": 3,
+            "surveillance_request": false,
+            "evidence": "Kayaker flipped on Lake Parker"
+          }
+        },
+        {
+          "id": "INC-5",
+          "correct": {
+            "incident_type": true,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "MEDICAL",
+            "landmark_id": "IST",
+            "urgency": 3,
+            "surveillance_request": false,
+            "evidence": "collapsed outside the IST building"
+          }
+        },
+        {
+          "id": "INC-6",
+          "correct": {
+            "incident_type": true,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "FIRE",
+            "landmark_id": "POND",
+            "urgency": 3,
+            "surveillance_request": false,
+            "evidence": "Small brush fire near the retention ponds"
+          }
+        },
+        {
+          "id": "INC-7",
+          "correct": {
+            "incident_type": true,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "SUSPICIOUS_ACTIVITY",
+            "landmark_id": "SDC",
+            "urgency": 2,
+            "surveillance_request": false,
+            "evidence": "lot by the Student Development Center"
+          }
+        },
+        {
+          "id": "INC-8",
+          "correct": {
+            "incident_type": false,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "SUSPICIOUS_ACTIVITY",
+            "landmark_id": "BARC",
+            "urgency": 1,
+            "surveillance_request": true,
+            "evidence": "Barnett research center"
+          }
+        },
+        {
+          "id": "INC-9",
+          "correct": {
+            "incident_type": false,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "OTHER",
+            "landmark_id": "UNKNOWN",
+            "urgency": 2,
+            "surveillance_request": false,
+            "evidence": "Hearing loud bangs somewhere, not sure where, maybe fireworks."
+          }
+        },
+        {
+          "id": "INC-10",
+          "correct": {
+            "incident_type": true,
+            "landmark_id": true,
+            "surveillance_request": false
+          },
+          "pred": {
+            "incident_type": "SUSPICIOUS_ACTIVITY",
+            "landmark_id": "SUNTRAX",
+            "urgency": 2,
+            "surveillance_request": true,
+            "evidence": "hovering over the SunTrax track"
+          }
+        }
+      ]
+    }
+  },
+  "google/gemini-2.5-flash": {
+    "notam": {
+      "n": 13,
+      "all_fields_correct": "10/13",
+      "per_field": {
+        "category": "11/13",
+        "affects_aircraft": "13/13",
+        "shape": "13/13",
+        "coord_strings": "13/13",
+        "center_string": "13/13",
+        "radius_nm": "13/13",
+        "floor_raw": "13/13",
+        "ceiling_raw": "13/13",
+        "start_raw": "12/13",
+        "end_raw": "13/13"
+      },
+      "rows": [
+        {
+          "id": "FDC 6/4471",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "SPACE_OPS",
+            "affects_aircraft": true,
+            "shape": "polygon",
+            "coord_strings": [
+              "2845N08100W",
+              "2845N08030W",
+              "2815N08030W",
+              "2815N08100W"
+            ],
+            "center_string": null,
+            "radius_nm": null,
+            "floor_raw": "SFC",
+            "ceiling_raw": "UNL",
+            "start_raw": "2611201800",
+            "end_raw": "2611201930"
+          }
+        },
+        {
+          "id": "FDC 6/3621",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": false,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "TFR",
+            "affects_aircraft": true,
+            "shape": "circle",
+            "coord_strings": [],
+            "center_string": "282306N0813356W",
+            "radius_nm": 3,
+            "floor_raw": "SFC",
+            "ceiling_raw": "3000FT AGL",
+            "start_raw": null,
+            "end_raw": "PERM"
+          }
+        },
+        {
+          "id": "MCO 11/045",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "OTHER",
+            "affects_aircraft": false,
+            "shape": "none",
+            "coord_strings": [],
+            "center_string": null,
+            "radius_nm": null,
+            "floor_raw": null,
+            "ceiling_raw": null,
+            "start_raw": "2611201400",
+            "end_raw": "2611202000"
+          }
+        },
+        {
+          "id": "FDC 6/4802",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "TFR",
+            "affects_aircraft": true,
+            "shape": "circle",
+            "coord_strings": [],
+            "center_string": "280808N0814854W",
+            "radius_nm": 1,
+            "floor_raw": "SFC",
+            "ceiling_raw": "2000FT AGL",
+            "start_raw": "2611201600",
+            "end_raw": "2611202200"
+          }
+        },
+        {
+          "id": "FDC 6/5102",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "SPACE_OPS",
+            "affects_aircraft": true,
+            "shape": "polygon",
+            "coord_strings": [
+              "2838N08040W",
+              "2838N08020W",
+              "2825N08020W",
+              "2825N08040W"
+            ],
+            "center_string": null,
+            "radius_nm": null,
+            "floor_raw": "SFC",
+            "ceiling_raw": "FL180",
+            "start_raw": "2612031105",
+            "end_raw": "2612031340"
+          }
+        },
+        {
+          "id": "FDC 6/5230",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "SPACE_OPS",
+            "affects_aircraft": true,
+            "shape": "circle",
+            "coord_strings": [],
+            "center_string": "283636N0803615W",
+            "radius_nm": 30,
+            "floor_raw": "SFC",
+            "ceiling_raw": "UNL",
+            "start_raw": "2612090215",
+            "end_raw": "2612090545"
+          }
+        },
+        {
+          "id": "FDC 6/2210",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "TFR",
+            "affects_aircraft": true,
+            "shape": "circle",
+            "coord_strings": [],
+            "center_string": "254729N0801111W",
+            "radius_nm": 3,
+            "floor_raw": "SFC",
+            "ceiling_raw": "3000FT AGL",
+            "start_raw": "2611221730",
+            "end_raw": "2611222130"
+          }
+        },
+        {
+          "id": "TPA 11/112",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "OTHER",
+            "affects_aircraft": false,
+            "shape": "none",
+            "coord_strings": [],
+            "center_string": null,
+            "radius_nm": null,
+            "floor_raw": null,
+            "ceiling_raw": null,
+            "start_raw": "2611190300",
+            "end_raw": "2611191000"
+          }
+        },
+        {
+          "id": "FDC 6/4590",
+          "correct": {
+            "category": false,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "TFR",
+            "affects_aircraft": true,
+            "shape": "polygon",
+            "coord_strings": [
+              "2842N08055W",
+              "2842N08035W",
+              "2830N08035W",
+              "2830N08055W"
+            ],
+            "center_string": null,
+            "radius_nm": null,
+            "floor_raw": "SFC",
+            "ceiling_raw": "UNL",
+            "start_raw": "2611211800",
+            "end_raw": "2611211930"
+          }
+        },
+        {
+          "id": "MLB 11/020",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "OTHER",
+            "affects_aircraft": false,
+            "shape": "none",
+            "coord_strings": [],
+            "center_string": null,
+            "radius_nm": null,
+            "floor_raw": null,
+            "ceiling_raw": null,
+            "start_raw": "2611180000",
+            "end_raw": "2611252359"
+          }
+        },
+        {
+          "id": "FDC 6/6001",
+          "correct": {
+            "category": false,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "TFR",
+            "affects_aircraft": true,
+            "shape": "polygon",
+            "coord_strings": [
+              "2850N08045W",
+              "2850N08025W",
+              "2835N08025W",
+              "2835N08045W"
+            ],
+            "center_string": null,
+            "radius_nm": null,
+            "floor_raw": "SFC",
+            "ceiling_raw": "UNL",
+            "start_raw": "2612150900",
+            "end_raw": "2612151100"
+          }
+        },
+        {
+          "id": "FDC 6/1177",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "TFR",
+            "affects_aircraft": true,
+            "shape": "circle",
+            "coord_strings": [],
+            "center_string": "282100N0813300W",
+            "radius_nm": 2,
+            "floor_raw": "SFC",
+            "ceiling_raw": "400FT AGL",
+            "start_raw": "2611281400",
+            "end_raw": "2611290200"
+          }
+        },
+        {
+          "id": "FDC 6/7340",
+          "correct": {
+            "category": true,
+            "affects_aircraft": true,
+            "shape": true,
+            "coord_strings": true,
+            "center_string": true,
+            "radius_nm": true,
+            "floor_raw": true,
+            "ceiling_raw": true,
+            "start_raw": true,
+            "end_raw": true
+          },
+          "pred": {
+            "category": "SPACE_OPS",
+            "affects_aircraft": true,
+            "shape": "polygon",
+            "coord_strings": [
+              "2900N08050W",
+              "2900N08010W",
+              "2810N08010W",
+              "2810N08050W"
+            ],
+            "center_string": null,
+            "radius_nm": null,
+            "floor_raw": "5000FT",
+            "ceiling_raw": "UNL",
+            "start_raw": "2612200400",
+            "end_raw": "2612200630"
+          }
+        }
+      ],
+      "wrong_answers_not_caught_by_validation": [
+        "FDC 6/3621",
+        "FDC 6/4590",
+        "FDC 6/6001"
+      ]
+    },
+    "incident": {
+      "n": 10,
+      "all_fields_correct": "9/10",
+      "per_field": {
+        "incident_type": "9/10",
+        "landmark_id": "10/10",
+        "surveillance_request": "10/10"
+      },
+      "rows": [
+        {
+          "id": "INC-1",
+          "correct": {
+            "incident_type": true,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "MISSING_PERSON",
+            "landmark_id": "WOODS",
+            "urgency": 2,
+            "surveillance_request": false,
+            "evidence": "heading into the woods north of campus"
+          }
+        },
+        {
+          "id": "INC-2",
+          "correct": {
+            "incident_type": true,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "TRAFFIC",
+            "landmark_id": "I4",
+            "urgency": 3,
+            "surveillance_request": false,
+            "evidence": "on I-4 at the Polk Parkway interchange"
+          }
+        },
+        {
+          "id": "INC-3",
+          "correct": {
+            "incident_type": true,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "SUSPICIOUS_ACTIVITY",
+            "landmark_id": "RES",
+            "urgency": 1,
+            "surveillance_request": true,
+            "evidence": "residence halls"
+          }
+        },
+        {
+          "id": "INC-4",
+          "correct": {
+            "incident_type": true,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "WATER_RESCUE",
+            "landmark_id": "LAKEPARKER",
+            "urgency": 3,
+            "surveillance_request": false,
+            "evidence": "Kayaker flipped on Lake Parker"
+          }
+        },
+        {
+          "id": "INC-5",
+          "correct": {
+            "incident_type": true,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "MEDICAL",
+            "landmark_id": "IST",
+            "urgency": 3,
+            "surveillance_request": false,
+            "evidence": "outside the IST building"
+          }
+        },
+        {
+          "id": "INC-6",
+          "correct": {
+            "incident_type": true,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "FIRE",
+            "landmark_id": "POND",
+            "urgency": 2,
+            "surveillance_request": false,
+            "evidence": "near the retention ponds"
+          }
+        },
+        {
+          "id": "INC-7",
+          "correct": {
+            "incident_type": true,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "SUSPICIOUS_ACTIVITY",
+            "landmark_id": "SDC",
+            "urgency": 2,
+            "surveillance_request": false,
+            "evidence": "lot by the Student Development Center"
+          }
+        },
+        {
+          "id": "INC-8",
+          "correct": {
+            "incident_type": false,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "SUSPICIOUS_ACTIVITY",
+            "landmark_id": "BARC",
+            "urgency": 1,
+            "surveillance_request": true,
+            "evidence": "Barnett research center"
+          }
+        },
+        {
+          "id": "INC-9",
+          "correct": {
+            "incident_type": true,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "SUSPICIOUS_ACTIVITY",
+            "landmark_id": "UNKNOWN",
+            "urgency": 1,
+            "surveillance_request": false,
+            "evidence": "not sure where"
+          }
+        },
+        {
+          "id": "INC-10",
+          "correct": {
+            "incident_type": true,
+            "landmark_id": true,
+            "surveillance_request": true
+          },
+          "pred": {
+            "incident_type": "SUSPICIOUS_ACTIVITY",
+            "landmark_id": "SUNTRAX",
+            "urgency": 2,
+            "surveillance_request": false,
+            "evidence": "hovering over the SunTrax track"
+          }
+        }
+      ]
+    }
+  }
+}
