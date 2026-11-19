@@ -67,6 +67,7 @@ def call_openrouter(prompt, schema, model=None, timeout=25):
     body = {
         "model": model,
         "temperature": 0,
+        "max_tokens": 800,  # small cap: OpenRouter reserves credits for max_tokens, a big default can fail with 402
         "response_format": {"type": "json_object"},
         "messages": [
             {"role": "system", "content": "Reply with ONE JSON object only, no other text. "
@@ -109,8 +110,12 @@ def extract_json(prompt, schema):
         try:
             return call_openrouter(prompt, schema)
         except urllib.error.HTTPError as e:
-            reason = "credits used up" if e.code == 402 else f"HTTP {e.code}"
-            errors.append(f"OpenRouter: {reason}")
+            try:
+                detail = json.loads(e.read()).get("error", {}).get("message", "")
+            except Exception:
+                detail = ""
+            reason = "not enough credits" if e.code == 402 else f"HTTP {e.code}"
+            errors.append(f"OpenRouter: {reason}" + (f" ({detail[:160]})" if detail else ""))
         except Exception as e:
             errors.append(f"OpenRouter: {e}")
     if gemini_available():
